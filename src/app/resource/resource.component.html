@@ -1,0 +1,137 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Resources
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+    <div class="alert alert-success" role="alert" *ngIf="formsuccess">
+      <strong>{{errorMessage}}</strong>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <!--<form (ngSubmit)="addtimeline()" method="POST" [formGroup]="resourceForm">-->
+
+        <label>Select Project name</label>
+        <!--<input id="project_name" type="text" class="form-control" placeholder="Project Name" formControlName="project_name">-->
+        <!--<select name="project_name" class="form-control">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let user of projects" value="project">{{user.project_name}}</option>
+                                                                                   
+                               </select>-->
+        <select ngModel (ngModelChange)="getDetails($event)" class="form-control">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of projects"  value="{{event.project_name}}">{{event.project_name}}</option>
+                                                                                   
+                               </select>
+        <!--<span class="help-block" *ngIf="displayMessage.project_name">
+            
+                             {{displayMessage.project_name}}
+                        </span>-->
+            
+        <div *ngIf = 'buttonclicked' class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <thead class="thead-inverse">
+              <tr class="uppercase">
+                <th>#</th>
+                <th>Assigned To</th>
+
+
+                <th>E-Mail Id</th>
+                
+                <th>Involved Project</th>
+                
+                
+                <th>Allocate/Deallocate</th>
+
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <template ngFor let-project [ngForOf]="ass_names" let-i="index">
+                <!--<tr *ngFor="let leave of leaves">-->
+                <tr>
+                  <td>{{i+1}}</td>
+                  <td>{{project.name}}</td>
+                  <td>{{project.email}}</td>
+                  <!--<td>{{project.id}}-->
+                  <td>{{project.involved_project}}</td>
+                  <div *ngIf="project.involved_project">
+                    <td><button class="btn btn-sm btn-danger" (click)="deallocate(project.username,project.email)"> Deallocate</button></td>
+                  </div>
+                  <div *ngIf="!project.involved_project">
+                    <td><button class="btn btn-info"> Allocate</button></td>
+                  </div>
+
+
+
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+        <!--</form>-->
+      </div>
+    </div>
+  <!--</section>
+  <section class="content">-->
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <label>Select Free Candidates name</label>
+       <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <thead class="thead-inverse">
+              <tr class="uppercase">
+                <th>#</th>
+                <th>Assign To</th>
+
+
+                <th>E-Mail Id</th>
+                <div *ngIf = "buttonclicked">
+                <th>Involve to Project</th>
+               </div>
+                <!--<div *ngIf = "buttonclicked">-->
+                <th>Allocate/Deallocate</th>
+                 <!--</div>-->
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <template ngFor let-project [ngForOf]="freecand" let-i="index">
+                <!--<tr *ngFor="let leave of leaves">-->
+                <tr>
+                  <td>{{i+1}}</td>
+                  <td>{{project.username}}</td>
+                  <td>{{project.email}}</td>
+                  <!--<template ngFor let-project [ngForOf]="ass_names" let-i="index">-->
+                  <div *ngIf = "buttonclicked">
+                  <td>{{involvedproject}}</td>
+                  </div>
+                  <!--<div *ngIf = "buttonclicked">-->
+                  <!--</template>-->
+                  <td><button class="btn btn-info" [disabled]="!buttonclicked" (click)= "allocate(project.username,project.email)" > Allocate</button></td>
+                  <!--</div>-->
+
+
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</section>
+</div>

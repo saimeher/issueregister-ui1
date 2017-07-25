@@ -1,0 +1,110 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Stats
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+    <div class="alert alert-success" role="alert" *ngIf="formsuccess">
+      <strong>{{errorMessage}}</strong>
+    </div>
+  </section>
+
+
+  <section class="content">
+    <div class="box box-info">
+      <div class="box-header with-border">
+
+        <label>Select Project name</label>
+
+        <select ngModel (ngModelChange)="getDetails($event)" class="form-control">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of projects" value="{{event.project_name}}">{{event.project_name}}</option>
+                                                                                   
+          </select>
+      </div>
+      <div *ngIf="selected">
+        <form (ngSubmit)="addStatus()" method="POST" [formGroup]="tstatus_form">
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Project Name</label>
+            <div class="input-group col-sm-6">
+              <input formControlName="project_name" name="project_name" type="text" value={{pname}} placeholder="Enter Project name" class="form-control" readonly>
+
+              <span class="help-block" *ngIf="displayMessage.project_name">
+                             {{displayMessage.project_name}}
+                        </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Stage</label>
+            <div class="input-group col-sm-6">
+              <!--<input formControlName="stage" name="stage" type="text" placeholder="Enter project Stage" class="form-control">
+
+            <span class="help-block" *ngIf="displayMessage.stage">
+                             {{displayMessage.stage}}
+                        </span>-->
+              <div *ngIf=" pro_name!= pname">
+                <select class="form-control" formControlName="stage" name="stage">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of stages" value="{{event.stage}}">{{event.stage}}</option>
+                                                                                   
+          </select>
+              </div>
+              <div *ngIf="pro_name == pname">
+                <select class="form-control" formControlName="stage" name="stage" [(ngModel)]="stag">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of stages"  value="{{event.stage}}">{{event.stage}}</option>
+                                                                           
+          </select>
+              </div>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Status</label>
+            <div class="input-group col-sm-6">
+              <!--<input formControlName="status" name="status" type="text" placeholder="Enter Project Status" class="form-control">
+
+            <span class="help-block" *ngIf="displayMessage.status">
+                             {{displayMessage.status}}
+                        </span>-->
+              <!--<select class="form-control">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of statuss" value="{{event.status}}">{{event.status}}</option>
+                                                                                   
+          </select>-->
+          <div *ngIf=" pro_name!= pname">
+                <select class="form-control" formControlName="status" name="status">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of statuss" value="{{event.status}}">{{event.status}}</option>
+                                                                                   
+          </select>
+              </div>
+              <div *ngIf="pro_name == pname">
+                <select class="form-control" formControlName="status" name="status" [(ngModel)]="statu">
+                                <option selected value="">--Select--</option>
+                                <option *ngFor="let event of statuss"  value="{{event.status}}">{{event.status}}</option>
+                                                                           
+          </select>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-info"> Submit</button>
+            <a routerLink="/projectmanagement/projecthome">
+          <button type="submit" class="btn btn-default">Cancel</button>
+          </a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

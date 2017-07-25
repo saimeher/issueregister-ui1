@@ -1,0 +1,110 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <!--<h1>
+      Dashboard
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>-->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+          <h3>User Dashboard</h3><a *ngIf="!totalPro" (click)="back()" class="btn btn-sm btn-danger pull-right">Back</a>
+        </h1>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="content">
+
+    <div *ngIf="totalPro" class="row">
+      <div class="col-md-9">
+        <div class="col-md-4 col-sm-12 col-xs-12">
+          <div class="panel panel-primary text-center no-boder bg-color-green">
+            <div class="panel-body">
+              <i class="fa fa-bar-chart-o fa-5x"></i>
+              <!--<h3 *ngFor="let gtc of getTktsByCategory">{{gtc.tot}}</h3>-->
+              <h3>{{total}}</h3>
+            </div>
+            <div class="panel-footer back-footer-green">
+              <a (click)="getTotalprojects()" style="color: #624e89">  Total Projects </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+          <div class="panel panel-primary text-center no-boder bg-color-blue">
+            <div class="panel-body">
+              <i class="fa fa-shopping-cart fa-5x"></i>
+              <h3>{{closedCount}}</h3>
+            </div>
+            <div class="panel-footer back-footer-blue">
+              <a (click)="getClosedProjects()" style="color: #624e89">  Closed Projects </a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+          <div class="panel panel-primary text-center no-boder bg-color-red">
+            <div class="panel-body">
+              <i class="fa fa fa-comments fa-5x"></i>
+              <h3>{{progressCount}}</h3>
+            </div>
+            <div class="panel-footer back-footer-red">
+              <a (click)="getInProProjects()" style="color: #624e89">  In Progress Projects </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!totalPro">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Projects</h3>
+
+              <div class="box-tools">
+
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <thead class="thead-inverse">
+                  <tr class="uppercase">
+                    <th>#</th>
+                    <th>Project Name</th>
+                    <th>Project Manager</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <template ngFor let-project [ngForOf]="proDet" let-i="index">
+                    <!--<tr *ngFor="let leave of leaves">-->
+                    <tr>
+                      <td>{{i+1}}</td>
+                      <td>{{project.project_name}}</td>
+                      <td>{{project.project_manager}}</td>
+                      <td>{{project.start_date}}</td>
+                      <td>{{project.end_date}}</td>
+                      <td>{{project.status}}</td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>

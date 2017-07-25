@@ -1,0 +1,152 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+          <h3>Lead Dashboard</h3>
+        </h1>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="content">
+    <!--<div *ngIf="!dashboard">-->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Your Projects</h3>
+
+              <div class="box-tools">
+
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!--<div class="box-body table-responsive no-padding">-->
+            <table class="table table-hover table-expandable table-sticky-header">
+              <thead class="thead-inverse">
+                <tr class="uppercase">
+                  <th>#</th>
+                  <th>Project Name</th>
+                   
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Stage</th>
+                  <th>Status</th>
+                 
+                  <th>Total Days</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <template ngFor let-project [ngForOf]="proDet" let-i="index">
+                  <!--<tr *ngFor="let leave of leaves">-->
+                  <tr>
+                    <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">-->
+                    <td>{{i+1}}</td>
+                    <td>{{project.project_name}}</td>
+                    
+
+                    <td>{{project.start_date}}</td>
+                    <td>{{project.end_date}}</td>
+                    <td>{{project.stage}}</td>
+
+                    <td>{{project.status}}</td>
+                    <td *ngIf="project.daysleft >= 0"><small class="label  bg-green">{{project.daysleft}} days left</small></td>
+
+                    <td *ngIf="project.daysleft < 0"><small class="label  bg-red">{{-(project.daysleft)}} days over due</small></td>
+
+                  </tr>
+                   <template ngFor let-pro [ngForOf]="proMem" let-j="index">
+                        <div *ngIf="pro.involved_project_id == project.id">
+                        
+                      <table class="table table-striped">
+
+              <thead  class="thead-inverse">
+                <tr class="uppercase">
+                   <th>#</th> 
+                  <th>Task</th>
+                   <th>Start Date</th>
+                   <th> End Date</th>
+                    <th>  Status  </th>
+                  <th> Action </th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                          
+                  <tr>
+                     <td>{{j+1}}</td> 
+                    <td>{{pro.task}}</td>
+                    <td>{{pro.start_date}}</td>
+                     <td>{{pro.end_date}}</td>
+                      <td>{{pro.status}}</td>
+                  <td><a data-toggle="modal" data-target="#modal-default" (click)="getStat(pro.username)">{{pro.username}}</a></td>
+                    <!--<td><button type="button" (click)="edit(project)" class="btn btn-info" data-toggle="modal" data-target="#modal-default">-->
+          
+               
+
+                  </tr> 
+
+              </tbody>
+            </table>
+            </div>
+                   </template>
+                </template>
+              </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+              <!--</div>-->
+              </section>
+              </div>
+
+                  
+<div id="modal-default" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #624e89;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">&nbsp;</h4>
+          </div>
+          <div class="modal-body">
+            <!--<div class="panel-body">-->
+            <table class="table table-hover">
+              <thead class="thead-inverse">
+                <tr class="uppercase">
+                  <th>#</th>
+                  <th>Task</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!--<tr *ngFor="let leave of leaves">-->
+                <!--<div *ngIf="stat.task == ''">
+                no data found
+              </div>-->
+                <tr *ngFor="let stat of statData; let l=index">
+                  <td>{{l+1}}</td>
+                  <td>{{stat.task}}</td>
+
+                  <td>{{stat.start_date}}</td>
+                  <td>{{stat.end_date}}</td>
+                  <td *ngIf="stat.status == 'Completed'"><small class="label  bg-green">{{stat.status}}</small></td>
+                  <td *ngIf="stat.status == 'In Progress'"><small class="label  bg-yellow">{{stat.status}}</small></td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    

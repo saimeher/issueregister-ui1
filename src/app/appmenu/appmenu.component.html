@@ -1,0 +1,230 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!--<li class="header">MAIN NAVIGATION</li>-->
+    <ul class="sidebar-menu tree" data-widget="tree">
+      <li class="treeview ">
+        <a routerLink="/new">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+      </li>
+      <li class="treeview">
+        <a routerLink="/tickettooling">
+           <i class="fa fa-ticket"></i>
+            <span>Ticketing Tool</span> 
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu" style="display: none;">
+          <li><a> New Ticket</a></li>
+          <li><a> My Tickets</a></li>
+          <li><a> Raised Tickets</a></li>
+          <li><a> My TimeSheet List</a></li>
+        </ul>
+      </li>
+      <li class="treeview ">
+        <a routerLink="/dailytimesheet">
+            <i class="fa fa-calendar"></i> <span>Daily Time sheet </span>
+          </a>
+      </li>
+      <li class="treeview">
+        <a routerLink="/e-learning">
+            <i class="fa fa-graduation-cap"></i>
+            <span>E-Learning</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li class="treeview">
+            <a href="#"> Desginer
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> HTML</a></li>
+              <li><a href="#"> CSS</a></li>
+              <li><a href="#"> BootStrap</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"> Developer
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> JavaScripit</a></li>
+              <li><a href="#"> Angular</a></li>
+              <li><a href="#"> PHP</a></li>
+              <li><a href="#"> Node.Js</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"> DataBase
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> MySQL</a></li>
+              <li><a href="#"> MongoDB</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"> Data Analyst
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> Python</a></li>
+              <li><a href="#"> R Language</a></li>
+              <li><a href="#"> Machine Learning</a></li>
+              <li><a href="#"> Tableou</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a routerLink="/projectmanagement/projecthome">
+            <i class="fa fa-user"></i> <span>Project Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu" style="display: none;">
+          <li *ngIf = "this.api.role == 'admin'"> 
+            
+             <a (click)="sidebarchage('newproject')" [ngClass]="this.api.livePage == 'newproject'?'active-menu':''" >
+           New Project</a>
+          <a (click)="sidebarchage('adash')" [ngClass]="this.api.livePage == 'adash'?'active-menu':''" > Dashboard </a>
+          </li>
+        
+          <!--<div >-->
+          <li class="treeview" *ngIf = "this.api.role == 'lead'" >
+            <a href="#"> Project Status
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu" >
+              <li><a (click)="sidebarchage('prodashboard')" [ngClass]="this.api.livePage == 'prodashboard'?'active-menu':''" >
+           Dashboard</a></li>
+              <li><a (click)="sidebarchage('resource')" [ngClass]="this.api.livePage == 'resource'?'active-menu':''" >
+           Resource</a></li>
+              <li><a (click)="sidebarchage('timeline')" [ngClass]="this.api.livePage == 'timeline'?'active-menu':''" >
+           Timeline</a></li>
+              <li><a (click)="sidebarchage('tasks')" [ngClass]="this.api.livePage == 'tasks'?'active-menu':''" >
+           Add Task </a></li>
+           <li><a (click)="sidebarchage('tstatus')" [ngClass]="this.api.livePage == 'tstatus'?'active-menu':''" >
+           Task Status </a></li>
+            <li><a (click)="sidebarchage('projectstats')" [ngClass]="this.api.livePage == 'projectstats'?'active-menu':''" >
+            Project Stats </a></li>
+            </ul>
+          </li>
+          <!--</div>-->
+        </ul>
+      </li>
+      <!--<li class="treeview">
+        <a href="">
+            <i class="fa fa-user"></i> <span>Leave Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/leavestatus"> Leave Status</a></li>
+          <li><a routerLink="/leavemanagement"> Admin Leave Approval</a></li>
+        </ul>
+      </li>-->
+      <li class="treeview">
+        <a routerLink="/systemadmintool">
+            <i class="fa fa-lock"></i> <span>System Admin Tool</span>
+          </a>
+      </li>
+      <li class="treeview ">
+        <a href="">
+            <i class="fa fa-male"></i> <span>HR operations</span>
+        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="treeview">
+            <a href="#"> Adminstrative
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> Employee Details</a></li>
+              <li><a href="#"> Payroll & Benifits</a></li>
+              <li><a href="#"> Document Storage</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"> Work Force
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> Attendance &  Absence</a></li>
+              <li><a href="#"> Organization Events</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"> Stratagic
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <ul class="treeview-menu">
+              <li><a href="#"> Performance Management</a></li>
+              <li><a href="#"> Training & Development</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <!--<li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"> Level One</a></li>
+            <li class="treeview">
+              <a href="#"> Level One
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"> Level Two</a></li>
+                <li class="treeview">
+                  <a href="#"> Level Two
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"> Level Three</a></li>
+                    <li><a href="#"> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"> Level One</a></li>
+          </ul>
+        </li>-->
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

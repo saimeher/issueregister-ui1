@@ -1,0 +1,33 @@
+<!--app-appheader-->
+<app-appheader></app-appheader>
+<!--app-appmenu-->
+<app-appmenu (selectedpage)="sidebarchage($event)"></app-appmenu>
+<!-- Content Wrapper. Contains page content -->
+<!--<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Dashboard
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </section>
+  <section class="content">
+    <h3> Hi Welcome to project management!</h3>
+    
+  </section>
+</div>-->
+<app-adash *ngIf = "this.api.livePage == 'adash'"></app-adash>
+<app-projecthome *ngIf = "this.api.livePage == 'projecthome'"></app-projecthome>
+<app-newproject *ngIf = "this.api.livePage == 'newproject'"></app-newproject>
+<app-timeline *ngIf = "this.api.livePage == 'timeline'"></app-timeline>
+<app-tasks *ngIf = "this.api.livePage == 'tasks'"></app-tasks>
+<app-resource *ngIf = "this.api.livePage == 'resource'"></app-resource>
+<app-prodashboard *ngIf = "this.api.livePage == 'prodashboard'"></app-prodashboard>
+<app-projectstats *ngIf = "this.api.livePage == 'projectstats'"></app-projectstats>
+<app-taskstatus *ngIf = "this.api.livePage == 'tstatus'"></app-taskstatus>
+<!--app-appfooter-->
+<app-appfooter></app-appfooter>
+<!--app-appsettings-->
+<!--<app-appsettings></app-appsettings>-->

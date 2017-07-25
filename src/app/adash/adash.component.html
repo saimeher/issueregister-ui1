@@ -1,0 +1,84 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <!--<h1>
+      Dashboard
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>-->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+          <h3>Admin Dashboard</h3>
+        </h1>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="content">
+    <!-- <div *ngIf="!dashboard"> -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Your Projects</h3>
+
+              <div class="box-tools">
+
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!--<div class="box-body table-responsive no-padding">-->
+            <table class="table table-hover table-expandable table-sticky-header">
+              <thead class="thead-inverse">
+                <tr class="uppercase">
+                  <th>#</th>
+                  <th>Project Name</th>
+
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Stage</th>
+                  <th>Status</th>
+                  <th>project managaer</th>
+                
+
+                </tr>
+              </thead>
+              <tbody>
+                <template ngFor let-project [ngForOf]="proDet" let-i="index">
+                  <!--<tr *ngFor="let leave of leaves">-->
+                  <tr>
+                    <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">-->
+                    <td>{{i+1}}</td>
+                    <td>{{project.project_name}}</td>
+
+                    <td>{{project.start_date}}</td>
+                    <td>{{project.end_date}}</td>
+                    <td>{{project.stage}}</td>
+  
+                    <td>{{project.status}}</td>
+                    <td>{{project.project_manager}}
+                    <!--<td *ngIf = "project.daysleft > 0"><small class="label  bg-green">{{project.daysleft}} days left</small></td>
+                   
+                    <td *ngIf = "project.daysleft < 0"><small class="label  bg-red">{{project.daysleft}} days over due</small></td>-->
+                    
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+            <!--</div>-->
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    <!-- </div> -->
+  </section>
+
+</div>
+<!--<script>
+ $('.collapse').collapse()
+
+</script>-->
